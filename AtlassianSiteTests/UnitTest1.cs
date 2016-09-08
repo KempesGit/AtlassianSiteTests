@@ -29,12 +29,5 @@ namespace AtlassianSiteTests
             testPageObject.OpenMainPage(driver);
             testPageObject.CreateNewPage(driver);
         }
-
-
-        [TestMethod]
-        public void SetRestrictions()
-        {
-
-        }
     }
 }
