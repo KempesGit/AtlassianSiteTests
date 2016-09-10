@@ -14,7 +14,6 @@ namespace AtlassianSiteTests
         {
             driver = new ChromeDriver();
             testPageObject = new AtlassianSite();
-            testPageObject.OpenMainPage(driver);
         }
 
         [TestCleanup]
