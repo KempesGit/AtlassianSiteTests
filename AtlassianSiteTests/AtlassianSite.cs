@@ -12,33 +12,29 @@ namespace AtlassianSiteTests
 
         public void OpenMainPage(ChromeDriver driver)
         {
-            driver.Navigate().GoToUrl("https://www.atlassian.com/software/confluence/try");
+            driver.Navigate().GoToUrl("https://pagepage.atlassian.net/");
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(30));
         }
 
-        public void CreateNewPage(ChromeDriver driver)
+        public void LoginToConfluence(ChromeDriver driver)
         {
-            Random random = new Random();
-            string randomString = random.Next(999, 99999).ToString();
-            string email = firstName + randomString + "." + lastName + "@nowa.lepsza.poczta.pl";
+            driver.FindElementById("username").SendKeys("the.hanging.gardens@gmail.com");
+            driver.FindElementById("password").SendKeys("dupa1234");
+            driver.FindElementById("login").Click();
+            
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(3));
+            IWebElement regCompleted = wait.Until(drv => drv.FindElement(By.XPath("//*[contains(text(), 'Welcome to Confluence')]")));
+        }
 
-            ClickTryIt(driver);
-            driver.FindElementById("accountName").SendKeys(firstName + randomString);
-            driver.FindElementById("firstName").SendKeys(firstName + randomString);
-            driver.FindElementById("lastName").SendKeys(lastName);
-            driver.FindElementById("email").SendKeys(email);
-            driver.FindElementById("aod-password").SendKeys("haslo1234");
-            driver.FindElementByXPath("//*[contains(text(), 'Start now')]").Click();
+        public void LoginOffConfluence(ChromeDriver driver)
+        {
+            driver.FindElementById("user-menu-link").Click();
+            driver.FindElementById("logout-link").Click();
+            driver.FindElementById("logout").Click();
 
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(3));
-            IWebElement regCompleted = wait.Until(drv => drv.FindElement(By.XPath("//*[contains(text(), 'Great, check your inbox')]")));
+            IWebElement regCompleted = wait.Until(drv => drv.FindElement(By.XPath("//*[contains(text(), 'You are logged out of this Atlassian Cloud instance')]")));
         }
 
-        public void ClickTryIt(ChromeDriver driver)
-        {
-            driver.FindElementByCssSelector(
-                "a[href=\"https://www.atlassian.com/ondemand/signup/form?product=confluence.ondemand,jira-software.ondemand,jira-servicedesk.ondemand\"]").Click();
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(30));
-        }
     }
 }

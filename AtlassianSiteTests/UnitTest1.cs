@@ -27,7 +27,8 @@ namespace AtlassianSiteTests
         public void CreateNewPage()
         {
             testPageObject.OpenMainPage(driver);
-            testPageObject.CreateNewPage(driver);
+            testPageObject.LoginToConfluence(driver);
+            testPageObject.LoginOffConfluence(driver); 
         }
     }
 }
