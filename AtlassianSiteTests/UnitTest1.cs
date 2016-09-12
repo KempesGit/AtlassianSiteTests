@@ -35,7 +35,7 @@ namespace AtlassianSiteTests
         {
             testPageObject.OpenMainPage(driver);
             testPageObject.LoginToConfluence(driver);
-
+            testPageObject.SetRestrictions(driver);
             testPageObject.LoginOffConfluence(driver);
         }
 

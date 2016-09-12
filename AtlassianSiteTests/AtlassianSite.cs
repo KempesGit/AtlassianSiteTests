@@ -7,9 +7,6 @@ namespace AtlassianSiteTests
 {
     public class AtlassianSite
     {
-        string firstName = "Adam";
-        string lastName = "Kowalski";
-
         public void OpenMainPage(ChromeDriver driver)
         {
             driver.Navigate().GoToUrl("https://pagepage.atlassian.net/");
@@ -39,10 +36,15 @@ namespace AtlassianSiteTests
 
         public void SetRestrictions(ChromeDriver driver)
         {
-            //driver.FindElementById("username").SendKeys("the.hanging.gardens@gmail.com");
-            //driver.FindElementById("password").SendKeys("dupa1234");
-            //driver.FindElementById("login").Click();
-
+            driver.FindElementById("space-menu-link").Click();
+            driver.FindElementById("view-all-spaces-link").Click();
+            driver.FindElementByLinkText("https://pagepage.atlassian.net/wiki/display/NEW").Click();
+            //*[@id="action-menu-link"]/span/span
+            
+            driver.FindElementByXPath("*[@id='action - menu - link']/span/span").Click();
+            driver.FindElementById("action - page - permissions - link").Click();
+            
+            //*[@id="recent-spaces-section"]/ul/li[1]/a
             //var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(3));
             //IWebElement regCompleted = wait.Until(drv => drv.FindElement(By.XPath("//*[contains(text(), 'Welcome to Confluence')]")));
         }
