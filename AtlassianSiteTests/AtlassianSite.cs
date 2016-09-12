@@ -20,7 +20,7 @@ namespace AtlassianSiteTests
             driver.FindElementById("login").Click();
             
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(3));
-            IWebElement regCompleted = wait.Until(drv => drv.FindElement(By.XPath("//*[contains(text(), 'Welcome to Confluence')]")));
+            IWebElement regCompleted = wait.Until(drv => drv.FindElement(By.Id("WelcometoConfluence")));
         }
 
         public void LoginOffConfluence(ChromeDriver driver)
@@ -30,7 +30,7 @@ namespace AtlassianSiteTests
             driver.FindElementById("logout").Click();
 
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(3));
-            IWebElement regCompleted = wait.Until(drv => drv.FindElement(By.XPath("//*[contains(text(), 'You are logged out of this Atlassian Cloud instance')]")));
+            IWebElement regCompleted = wait.Until(drv => drv.FindElement(By.Id("logged-out")));
         }
 
 
