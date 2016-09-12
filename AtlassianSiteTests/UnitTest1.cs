@@ -39,5 +39,13 @@ namespace AtlassianSiteTests
             testPageObject.LoginOffConfluence(driver);
         }
 
+        [TestMethod]
+        public void CreatePage()
+        {
+            testPageObject.OpenMainPage(driver);
+            testPageObject.LoginToConfluence(driver);
+            testPageObject.CreatePage(driver);
+            testPageObject.LoginOffConfluence(driver);
+        }
     }
 }

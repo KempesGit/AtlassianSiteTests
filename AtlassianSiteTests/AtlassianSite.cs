@@ -49,5 +49,25 @@ namespace AtlassianSiteTests
             //IWebElement regCompleted = wait.Until(drv => drv.FindElement(By.XPath("//*[contains(text(), 'Welcome to Confluence')]")));
         }
 
+        public void CreatePage(ChromeDriver driver)
+        {
+            driver.FindElementById("create-page-button").Click();
+
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(3));
+            IWebElement regCompleted = wait.Until(drv => drv.FindElement(By.Id("create-dialog")));
+
+            //click blank page
+            driver.FindElementByXPath("//*[@data-content-blueprint-id='00000000-0000-0000-0000-000000000000']").Click();
+            //click CREATE button
+            driver.FindElementByXPath("//*[contains(@class,'create-dialog-create-button aui-button aui-button-primary')]").Click();
+
+            regCompleted = wait.Until(drv => drv.FindElement(By.Id("wysiwyg")));
+
+            //input page title
+            //TODO: write random title to a new page
+
+            //click SAVE button
+            driver.FindElementById("rte-button-publish").Click();
+        }
     }
 }
