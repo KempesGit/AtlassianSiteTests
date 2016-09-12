@@ -29,5 +29,15 @@ namespace AtlassianSiteTests
             testPageObject.LoginToConfluence(driver);
             testPageObject.LoginOffConfluence(driver); 
         }
+
+        [TestMethod]
+        public void SetRestrictions()
+        {
+            testPageObject.OpenMainPage(driver);
+            testPageObject.LoginToConfluence(driver);
+
+            testPageObject.LoginOffConfluence(driver);
+        }
+
     }
 }

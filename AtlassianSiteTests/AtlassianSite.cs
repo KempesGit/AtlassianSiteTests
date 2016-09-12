@@ -36,5 +36,16 @@ namespace AtlassianSiteTests
             IWebElement regCompleted = wait.Until(drv => drv.FindElement(By.XPath("//*[contains(text(), 'You are logged out of this Atlassian Cloud instance')]")));
         }
 
+
+        public void SetRestrictions(ChromeDriver driver)
+        {
+            //driver.FindElementById("username").SendKeys("the.hanging.gardens@gmail.com");
+            //driver.FindElementById("password").SendKeys("dupa1234");
+            //driver.FindElementById("login").Click();
+
+            //var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(3));
+            //IWebElement regCompleted = wait.Until(drv => drv.FindElement(By.XPath("//*[contains(text(), 'Welcome to Confluence')]")));
+        }
+
     }
 }
