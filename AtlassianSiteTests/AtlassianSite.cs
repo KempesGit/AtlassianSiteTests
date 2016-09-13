@@ -33,7 +33,6 @@ namespace AtlassianSiteTests
             IWebElement regCompleted = wait.Until(drv => drv.FindElement(By.Id("logged-out")));
         }
 
-
         public void SetRestrictions(ChromeDriver driver)
         {
             driver.FindElementById("space-menu-link").Click();
@@ -51,6 +50,7 @@ namespace AtlassianSiteTests
 
         public void CreatePage(ChromeDriver driver)
         {
+            //click 3 dots
             driver.FindElementById("create-page-button").Click();
 
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(3));
@@ -63,8 +63,8 @@ namespace AtlassianSiteTests
 
             regCompleted = wait.Until(drv => drv.FindElement(By.Id("wysiwyg")));
 
-            //input page title
-            //TODO: write random title to a new page
+            //write page title
+            driver.FindElementById("content-title").SendKeys("Test page");
 
             //click SAVE button
             driver.FindElementById("rte-button-publish").Click();
